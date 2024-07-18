@@ -1,0 +1,34 @@
+resource "aws_instance" "db"{
+    count = 3
+    ami = "ami-041e2ea9402c46c32"
+    instance_type = "t2.micro"
+    vpc_security_group_ids = [aws_security_group.allow_ssh.id]
+    tags = {
+        Name = var.instance_names[count.index]
+    }
+}
+
+resource "aws_security_group" "allow_ssh" {
+    name = var.sg_name
+    description = var.sg_description
+
+    #this is block
+    ingress { # inbound security
+        from_port        = var.ssh_port
+        to_port          = var.ssh_port
+        protocol         = var.protocol
+        cidr_blocks      = var.allowed_cidr# allowing to everything
+    }
+
+    egress { # outbound security
+        from_port        = 0 # from 0 to 0 means, opening all protocols
+        to_port          = 0
+        protocol         = "-1" # -1 all protocols
+        cidr_blocks      = var.allowed_cidr
+    }
+
+    tags = {
+        Name = "allow_ssh"
+        CreatedBy = "guru prasad"
+    }
+}
