@@ -1,7 +1,8 @@
 resource "aws_instance" "db"{
-    count = 3 # loop will be continued upto three times
-    ami = "ami-041e2ea9402c46c32"
-    instance_type = "t2.micro"
+    # count = 3 # loop will be continued upto three times
+    count =length(var.instance_names) # length() is a function to determine the lenght of the given list
+    ami = var.image_id
+    instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.allow_ssh.id]
     tags = { # tags are used for naming purpose in aws
         Name = var.instance_names[count.index] # create 0.db,1.backend,2.frontend instance
