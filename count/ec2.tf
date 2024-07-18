@@ -1,10 +1,10 @@
 resource "aws_instance" "db"{
-    count = 3
+    count = 3 # loop will be continued upto three times
     ami = "ami-041e2ea9402c46c32"
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.allow_ssh.id]
-    tags = {
-        Name = var.instance_names[count.index]
+    tags = { # tags are used for naming purpose in aws
+        Name = var.instance_names[count.index] # create 0.db,1.backend,2.frontend instance
     }
 }
 
@@ -28,7 +28,7 @@ resource "aws_security_group" "allow_ssh" {
     }
 
     tags = {
-        Name = "allow_ssh"
+        Name = "allow_ssh" # name of security group
         CreatedBy = "guru prasad"
     }
 }
