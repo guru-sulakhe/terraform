@@ -3,6 +3,7 @@
 # 3. ENV variables
 # 4. variable default vale
 
+# ec2 variables
 variable "instance_names" {
     type = list
     default = ["db","backend","frontend"]
@@ -27,6 +28,7 @@ variable "common_tags" {
     }
 }
 
+# security group variables
 variable "sg_name" {
     default = "allow_ssh"
 }
@@ -49,3 +51,14 @@ variable "allowed_cidr" {
 }
 
 # if we dont include the default value, then $terraform plan will ask the user while executing 
+
+# route53 variables
+variable "zone_id" {
+    type = string
+    default = "Z08273698E2G6XTP9T7C"
+}
+
+variable "domain_name" {
+    type = string
+    default = "guru97s.cloud"
+}
