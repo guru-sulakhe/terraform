@@ -22,5 +22,5 @@ data "aws_ami" "ami_id" {
 data "aws_vpc" "default" {
     default = true
 }
-
+# data sources are used to query the resources of the provider
 
