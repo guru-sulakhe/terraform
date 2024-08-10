@@ -8,6 +8,8 @@ terraform {
 }
 
 # provide authentication here
+# before running the .tf file please ensure of the $ aws configre for authentication.
+# by usign below provider, terraform will authenticate to aws by the region, because using aws CLI for authentication at which we mentioned region aslo
 provider "aws" {
   region = "us-east-1"
 }
