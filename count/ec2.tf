@@ -6,7 +6,7 @@ resource "aws_instance" "db"{
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.allow_ssh.id]
     tags = { # tags are used for naming purpose in aws
-        Name = var.instance_names[count.index] # create 0.db,1.backend,2.frontend instance
+        Name = var.instance_names[count.index] # create 0.db,1.backend,2.frontend instance names
     }
 }
 
