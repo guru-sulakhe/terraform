@@ -34,8 +34,8 @@ resource "aws_instance" "expense" {
   tags = merge(
     var.common_tags,
     {
-        Name = var.instance_names[count.index]
-        Module = var.instance_names[count.index]
+        Name = var.instance_names[count.index] #1.db, 2.backend, 3.frontend
+        Module = var.instance_names[count.index] #1.db, 2.backend, 3.frontend
     }
   )
 }
