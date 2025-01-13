@@ -1,6 +1,7 @@
 resource "aws_instance" "db"{
     # count = 3 # loop will be continued upto three times
     count =length(var.instance_names) # length() is a function to determine the lenght of the given list
+    # 3 instances will be created such as db,backend,frontend
     ami = var.image_id
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.allow_ssh.id]

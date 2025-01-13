@@ -1,6 +1,8 @@
 # 1. command line variables
 # 2. terrafrom.tfvars
-# 3. variables.tf
+# 3. ENV variables
+# 4. variable default vale
+
 variable "image_id" {
   type        = string # optional
   default     = "ami-041e2ea9402c46c32" # optional
