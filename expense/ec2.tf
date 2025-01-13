@@ -28,6 +28,8 @@ resource "aws_instance" "expense" {
   count = length(var.instance_names)
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
   instance_type = var.instance_names[count.index] == "db" ? "t3.micro" : "t2.micro"
+  # if the instance name is db then t3.micro will be created 
+  # if the instance name is not db then t2.micro will be created
   # left side things are known as arguements, right side things are known as values
   tags = merge(
     var.common_tags,
