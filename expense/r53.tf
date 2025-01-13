@@ -7,6 +7,8 @@ resource "aws_route53_record" "expense" {
   type    = "A"
   ttl     = 1
   #records = local.record_value
+  # records will be created based on frontend. if the instance name is frontend then record will be created with public_ip
+  # if the instance name is not frontend  then record will be created with private_ip
   records = var.instance_names[count.index] == "frontend" ? [aws_instance.expense[count.index].public_ip] : [aws_instance.expense[count.index].private_ip]
   # if records already exists
   allow_overwrite = true
