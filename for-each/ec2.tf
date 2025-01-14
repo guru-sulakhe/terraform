@@ -1,5 +1,5 @@
 resource "aws_instance" "expense" {
-  for_each = var.instance_names # each.key and each.value will be iterated for every iteration
+  for_each = var.instance_names # this will iterate instance_names, each.key and each.value will be iterated for every iteration
   ami = data.aws_ami.ami_info.id
   vpc_security_group_ids = ["sg-0ae3a12e7b7696e53"]
   instance_type = each.value #each.vlue refers to t2.micro  instance type
