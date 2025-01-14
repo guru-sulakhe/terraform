@@ -5,14 +5,13 @@ terraform {
       version = "5.57.0"
     }
   }
-  backend "s3" {
+  backend "s3" { #stores the remote state in s3 bucket
     bucket = "guru97s-remote-state"
     key    = "remote-state-demo"
     region = "us-east-1"
     dynamodb_table = "guru97s-locking-dynamodb"
   }
 }
-# by including backend s3 terraform will create .state file in s3-bucket of AWS
 
 # provide authentication here
 # before running the .tf file please ensure of the $ aws configre for authentication.
