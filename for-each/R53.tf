@@ -9,7 +9,7 @@ resource "aws_route53_record" "expense" {
   ttl     = 1
   #records = local.record_value
   records = each.key == "frontend" ? [each.value.public_ip] : [each.value.private_ip] # here each.value refers to the value of the output of ec2.tf
-  # if records already exists
+  # if records already exists, it will override
   allow_overwrite = true
 }
 
