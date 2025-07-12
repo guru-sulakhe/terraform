@@ -1,3 +1,7 @@
+# to use command line variables type $ terraform plan -var="instance_type=t3.small"
+# Environment Variables: $ export TF_VAR_<Var_Name>=value
+# $ export TF_VAR_instance_type=t3.large
+
 resource "aws_security_group" "allow_ssh" {
     name = var.sg_name
     description = var.sg_description
@@ -32,3 +36,4 @@ resource "aws_instance" "db" {
 }
 # before executing, please ensure that one IAM user is created using the CLI in AWS
 # after creating, authenticate to $aws configure which will help in connecting to AWS
+
