@@ -1,3 +1,4 @@
+# for_each is only used for the MAP data types of terraform.
 resource "aws_instance" "expense" {
   for_each = var.instance_names # this will iterate instance_names for 3 times, each.key and each.value will be iterated for every iteration
   ami = data.aws_ami.ami_info.id
