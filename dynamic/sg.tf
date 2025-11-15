@@ -1,3 +1,5 @@
+# Dynamic Blocks are used whenever we want to repeat the required block to the number of times and need to mention dynamic to loop the block
+# Here ingress block will be repeated based on the var.inbound_rules and must mention content {} where we need to mention the block which will be looped
 resource "aws_security_group" "allow_ports" {
     name = "allow_ports"
     description = "allowing ports 22,80,8080,3306"
